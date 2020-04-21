@@ -32,11 +32,10 @@ const requireToken = passport.authenticate('bearer', { session: false })
 const router = express.Router()
 
 // INDEX
-// we don't have a 'requireToken' so we can access books without authentication
+// we don't have a 'requireToken' so we can access hangs without authentication
 router.get('/hangs', (req, res, next) => {
-// get all the books from db
+// get all the hangs from db
   Hang.find()
-  // convert all books to pojos
     .then(hangs => hangs.map(hang => hang.toObject()))
     // respond to the client
     .then(hangs => res.json({ hangs }))
@@ -88,7 +87,7 @@ router.patch('/hangs/:id', requireToken, removeBlanks, (req, res, next) => {
 
 
 // CREATE
-// POST /books
+// POST /
 // use post to CREATE
 router.post('/hangs', requireToken, (req, res, next) => {
   req.body.hang.owner = req.user.id
