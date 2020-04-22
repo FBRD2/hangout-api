@@ -21,8 +21,9 @@ const hangSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  owner: {
-    type: String,
+   owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
     required: true
   }
 }, {
