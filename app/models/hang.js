@@ -6,7 +6,7 @@ const hangSchema = new mongoose.Schema({
     required: true
   },
   date: {
-    type: Date,
+    type: String,
     required: true
   },
   time: {
@@ -21,7 +21,7 @@ const hangSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-   owner: {
+  owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
