@@ -1,4 +1,4 @@
-# Hangout Client
+# Hangout API
 
 
 
