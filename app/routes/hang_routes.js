@@ -43,7 +43,6 @@ router.get('/hangs', (req, res, next) => {
     .catch(next)
 })
 
-
 // SHOW
 
 router.get('/hangs/:id', (req, res, next) => {
@@ -52,7 +51,6 @@ router.get('/hangs/:id', (req, res, next) => {
     .then(hang => res.json({ hang: hang.toObject() }))
     .catch(next)
 })
-
 
 // DESTROY
 // DELETE /examples/5a7db6c74d55bc51bdf39793
@@ -68,12 +66,11 @@ router.delete('/hangs/:id', requireToken, (req, res, next) => {
     .catch(next)
 })
 
-
 // UPDATE
 // Patch - changing information request
 router.patch('/hangs/:id', requireToken, removeBlanks, (req, res, next) => {
   delete req.body.hang.owner
-// remove the 'owner' property form the req.body.example so it cannot be updated
+  // remove the 'owner' property form the req.body.example so it cannot be updated
   Hang.findById(req.params.id)
     .then(handle404)
     .then(hang => {
@@ -84,7 +81,6 @@ router.patch('/hangs/:id', requireToken, removeBlanks, (req, res, next) => {
     .then(() => res.sendStatus(204))
     .catch(next)
 })
-
 
 // CREATE
 // POST /
@@ -97,7 +93,6 @@ router.post('/hangs', requireToken, (req, res, next) => {
     })
     .catch(next)
 })
-
 
 // export the router so that it can be used and mounted in server.js
 module.exports = router
