@@ -64,7 +64,7 @@ router.delete('/hangs/:id', requireToken, (req, res, next) => {
       requireOwnership(req, hang)
       hang.deleteOne()
     })
-    .then(() => res.xsendStatus(204))
+    .then(() => res.sendStatus(204))
     .catch(next)
 })
 
@@ -92,7 +92,7 @@ router.patch('/rsvp/:id', removeBlanks, (req, res, next) => {
   Hang.findById(req.params.id)
     .then(handle404)
     .then(hang => {
-    
+
 
       return hang.updateOne({$push:{rsvp:req.body.hang}})
     })
