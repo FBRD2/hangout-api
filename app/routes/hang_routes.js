@@ -82,6 +82,21 @@ router.patch('/hangs/:id', requireToken, removeBlanks, (req, res, next) => {
     .catch(next)
 })
 
+// RSVP -----
+router.patch('/rsvp/:id', removeBlanks, (req, res, next) => {
+  delete req.body.hang.owner
+// remove the 'owner' property form the req.body.example so it cannot be updated
+  Hang.findById(req.params.id)
+    .then(handle404)
+    .then(hang => {
+
+
+      return hang.updateOne({$push:{rsvp:req.body.hang}})
+    })
+    .then(() => res.sendStatus(204))
+    .catch(next)
+})
+
 // CREATE
 // POST /
 // use post to CREATE
