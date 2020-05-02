@@ -17,7 +17,6 @@ Fork can be made and grunt served onto your server from the link to the project 
 
 ### Future fixes/issues
 
-- Need a RSVP
 - Change order events appear in, no RSVP to past events
 - Styling changes
 
